@@ -11,6 +11,7 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      gap: 50px;
     }
 
     form {
@@ -22,17 +23,28 @@
   </style>
 </head>
 <body>
-  <form action="" id="post-form">
-<!--    <label for="user_id"></label>-->
-<!--    <input type="number" name="user_id" id="user_id" placeholder="id">-->
+  <form action="" id="register-form">
+    <label for="name"></label>
+    <input type="text" name="name" id="name" placeholder="name">
 
-<!--    <label for="name"></label>-->
-<!--    <input type="text" name="name" id="name" placeholder="name">-->
+    <label for="email"></label>
+    <input type="email" name="email" id="email" placeholder="email">
 
-    <label for="content"></label>
-    <input type="text" name="content" id="content" placeholder="content">
-
-    <button type="submit">submit</button>
+    <button type="submit">Create user</button>
   </form>
+
+    <form action="" id="create-post">
+
+        <label for="user_id"></label>
+        <input type="number" name="user_id" id="user_id" placeholder="user id">
+
+        <label for="title"></label>
+        <input type="text" name="title" id="title" placeholder="title">
+
+        <label for="content"></label>
+        <input type="text" name="content" id="content" placeholder="Enter text">
+
+        <button type="submit">Create Post</button>
+    </form>
 </body>
 </html>

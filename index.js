@@ -64,9 +64,7 @@ app.get("/user/:id", async (req, res) => {
 //     res.json(req.body)
 // })
 
-app.get("/post", (req, res) => {
 
-})
 
 app.get("/test", async(req, res) => {
     const sort = req.query.sort || "id";
@@ -106,6 +104,37 @@ app.post("/test", async(req, res) => {
     `)
 
     res.json(req.body)
+})
+
+app.post("/user", async(req, res) => {
+    const {name, email} = req.body;
+    const [result] = await connection.query(`
+    INSERT INTO user(name, email) VALUES ('${name}', '${email}')
+    `)
+
+    res.json(req.body)
+});
+
+app.get("/user", async(req, res) => {
+    const sort = req.query.sort || "id";
+    const sortOrder = req.query.sortOrder || "ASC";
+    const [result, fields] = await connection.query(" SELECT * FROM user ORDER BY " + sort + " " + sortOrder)
+    res.json(result)
+});
+
+app.post("/posts", async(req, res) => {
+    console.log(req.body)
+    const {title, content, user_id} = req.body;
+    const [result] = await connection.query(`
+    INSERT INTO post(title, content, user_id) VALUES ('${title}', '${content}', '${user_id}')
+    `)
+
+    res.json(req.body)
+});
+
+app.get("/posts", async(req, res) => {
+    const [result] = await connection.query(`SELECT * FROM post`)
+    res.json(result)
 })
 
 
